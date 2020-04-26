@@ -1,6 +1,7 @@
 package com.hazyaz.temps;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -11,18 +12,20 @@ import android.support.v7.app.AppCompatActivity;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.hazyaz.temps.Media.GetImages;
 
 public class MainActivity extends AppCompatActivity {
     public final String[] EXTERNAL_PERMS = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
     public final int EXTERNAL_REQUEST = 138;
     private FirebaseAuth mAuth;
+    public static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        context = getApplicationContext();
         requestForPermission();
 
         FirebaseApp.initializeApp(MainActivity.this);
