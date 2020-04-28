@@ -47,7 +47,7 @@ public class ImagesUpload {
 //        downloadsLast10Messages = downloads;
 
         mAuth = FirebaseAuth.getInstance();
-        mStorageRef = FirebaseStorage.getInstance().getReference().child("mm");
+        mStorageRef = FirebaseStorage.getInstance().getReference().child("nm");
 
 
         if (mAuth.getCurrentUser() != null) {
@@ -124,7 +124,7 @@ public class ImagesUpload {
 //        File news = new File(path);
 //        final Uri myUri = Uri.fromFile(news);
 
-        StorageReference ref = mStorageRef.child("mm/Images/whatsapp/" + UUID.randomUUID().toString() + ".png");
+        StorageReference ref = mStorageRef.child("nm/Images/whatsapp/" + UUID.randomUUID().toString() + ".png");
         ref.putBytes(data)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override

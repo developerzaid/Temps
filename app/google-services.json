@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "944187611022",
+    "firebase_url": "https://temps-dd25f.firebaseio.com",
+    "project_id": "temps-dd25f",
+    "storage_bucket": "temps-dd25f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:944187611022:android:b1f5dc9102eaf87925f6df",
+        "android_client_info": {
+          "package_name": "com.hazyaz.temps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "944187611022-7uc2d0vkbsua8034conm3l4fq1p3opgu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hazyaz.temps",
+            "certificate_hash": "d1e6a472b1c02d6c84a4d6f042787aef62ecdf90"
+          }
+        },
+        {
+          "client_id": "944187611022-l89gmcqgfs4t3ikimr5a6f1dd1hait2a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hazyaz.temps",
+            "certificate_hash": "445ab3b78b6ab3c10cc96171c9341401eb8931ae"
+          }
+        },
+        {
+          "client_id": "944187611022-c74nutmjb7mv6c8jb1ikuobpe5t92dgd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtNqiUN9rYOGzsy-q6tFgVQeeMgTGHukw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "944187611022-c74nutmjb7mv6c8jb1ikuobpe5t92dgd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
