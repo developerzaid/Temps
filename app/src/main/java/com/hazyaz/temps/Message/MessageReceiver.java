@@ -6,13 +6,14 @@ import android.database.Cursor;
 import android.os.Build;
 import android.provider.Telephony;
 import android.support.annotation.RequiresApi;
-
-//import androidx.annotation.RequiresApi;
+import android.util.Log;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Date;
+
+//import androidx.annotation.RequiresApi;
 
 public class MessageReceiver {
 
@@ -54,10 +55,10 @@ public class MessageReceiver {
                     dateFormat.setMonth(dateFormat.getMonth()+1);
                     dateFormat.setYear(dateFormat.getYear()+1900);
                     Message getmessage=new Message(number,body,dateFormat.getTime(),type);
-
+                    Log.d("messagesof", "" + getmessage);
                     DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
-                    mDatabase.child("users").child("username").child("Messages").child(Integer.toString(j)).setValue(getmessage);
+//                    mDatabase.child("users").child("username").child("Messages").child(Integer.toString(j)).setValue(getmessage);
                     c.moveToNext();
                 }
             }

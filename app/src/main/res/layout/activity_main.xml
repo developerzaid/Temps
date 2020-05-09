@@ -1,18 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:scrollbars="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+        <Button
+            android:id="@+id/whatsappBtn"
+            android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+            android:text="WHATSAPP IMAGE" />
+
+        <Button
+            android:id="@+id/cameraBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CAMERA IMAGE" />
+
+        <Button
+            android:id="@+id/screenshotBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SCREENSHOTS" />
+
+        <Button
+            android:id="@+id/downloadBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DOWNLOADS" />
+
+        <Button
+            android:id="@+id/notificationBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NOTIFICATIOSN" />
+
+        <Button
+            android:id="@+id/takeSS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TAKE SS" />
+
+        <Button
+            android:id="@+id/takeImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TAKE IMAGE" />
+
+        <Button
+            android:id="@+id/callLogs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CALL LOGS" />
+
+        <Button
+            android:id="@+id/messages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MESSAGES" />
+
+        <Button
+            android:id="@+id/location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LOCATION" />
+
+        <Button
+            android:id="@+id/mic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MIC" />
+
+        <Button
+            android:id="@+id/contacts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CONTACTS" />
+
+    </LinearLayout>
+</ScrollView>
