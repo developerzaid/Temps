@@ -1,4 +1,4 @@
-package com.hazyaz.temps.Media;
+package com.hazyaz.temps.Storage;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

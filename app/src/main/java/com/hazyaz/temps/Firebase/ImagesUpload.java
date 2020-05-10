@@ -13,7 +13,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.hazyaz.temps.Media.CompressImages;
+import com.hazyaz.temps.Storage.CompressImages;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
