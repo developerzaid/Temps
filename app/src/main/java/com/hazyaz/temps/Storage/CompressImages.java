@@ -8,11 +8,15 @@ import android.graphics.Paint;
 import android.media.ExifInterface;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import java.io.IOException;
 
 public class CompressImages {
 
 
+    @Nullable
     public Bitmap compressImage(String imagePath) {
 
         String filePath = imagePath;
@@ -145,7 +149,7 @@ public class CompressImages {
 //    }
 
 
-    public int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+    public int calculateInSampleSize(@NonNull BitmapFactory.Options options, int reqWidth, int reqHeight) {
         final int height = options.outHeight;
         final int width = options.outWidth;
         int inSampleSize = 1;

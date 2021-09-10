@@ -5,8 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.Build;
 import android.provider.Telephony;
-import android.support.annotation.RequiresApi;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -17,8 +19,9 @@ import java.util.Date;
 
 public class MessageReceiver {
 
+    @NonNull
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public String getAllSms(Context context) {
+    public String getAllSms(@NonNull Context context) {
 
         ContentResolver cr = context.getContentResolver();
         StringBuffer stringBuffer = new StringBuffer();

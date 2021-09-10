@@ -3,6 +3,8 @@ package com.hazyaz.temps.Storage;
 import android.os.Environment;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import com.hazyaz.temps.Firebase.ImagesUpload;
 
 import java.io.File;
@@ -10,11 +12,15 @@ import java.util.ArrayList;
 
 public class GetImages {
 
+    @NonNull
     public ArrayList<String> whatsAppLast10Messages = new ArrayList<>();
+    @NonNull
     public ArrayList<String> cameraLast10Messages = new ArrayList<>();
+    @NonNull
     public ArrayList<String> screenshotsLast10Messages = new ArrayList<>();
+    @NonNull
     public ArrayList<String> downloadsLast10Messages = new ArrayList<>();
-    private int LAST10 = 5;
+    private final int LAST10 = 5;
 
 
     public GetImages() {

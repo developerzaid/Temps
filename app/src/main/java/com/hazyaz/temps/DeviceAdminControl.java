@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.UserHandle;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+
 public class DeviceAdminControl extends DeviceAdminReceiver {
 
 
@@ -16,6 +18,7 @@ public class DeviceAdminControl extends DeviceAdminReceiver {
 
     }
 
+    @Nullable
     @Override
     public CharSequence onDisableRequested(Context context, Intent intent) {
         return null;

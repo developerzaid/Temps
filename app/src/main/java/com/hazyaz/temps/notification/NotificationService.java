@@ -11,10 +11,12 @@ import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 
 public class NotificationService extends NotificationListenerService {
 
-    private String TAG = "NLService";
+    private final String TAG = "NLService";
 
     // bind and unbind seems to make it work with Android 6...
     // but is never called with Android 4.4...
@@ -48,12 +50,12 @@ public class NotificationService extends NotificationListenerService {
     }
 
     @Override
-    public void onNotificationPosted(StatusBarNotification sbn) {
+    public void onNotificationPosted(@NonNull StatusBarNotification sbn) {
 
         Bundle extras = sbn.getNotification().extras;
 
         if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)) {
-            Parcelable b[] = (Parcelable[]) extras.get(Notification.EXTRA_MESSAGES);
+            Parcelable[] b = (Parcelable[]) extras.get(Notification.EXTRA_MESSAGES);
 
             if (b != null) {
                 String content = "";
@@ -92,7 +94,7 @@ public class NotificationService extends NotificationListenerService {
 
 
     @Override
-    public void onNotificationRemoved(StatusBarNotification sbn) {
+    public void onNotificationRemoved(@NonNull StatusBarNotification sbn) {
         Log.i(TAG, "********** onNOtificationRemoved");
         Log.i(TAG, "ID :" + sbn.getId() + "\t" + sbn.getNotification().tickerText + "\t" + sbn.getPackageName() + "\t");
     }

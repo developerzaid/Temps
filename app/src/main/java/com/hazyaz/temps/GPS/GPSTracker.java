@@ -14,6 +14,9 @@ import android.os.IBinder;
 import android.provider.Settings;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 public class GPSTracker extends Service implements LocationListener {
 
     private final Context mContext;
@@ -179,7 +182,7 @@ public class GPSTracker extends Service implements LocationListener {
 
         // on pressing cancel button
         alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
+            public void onClick(@NonNull DialogInterface dialog, int which) {
                 dialog.cancel();
             }
         });
@@ -204,6 +207,7 @@ public class GPSTracker extends Service implements LocationListener {
     public void onStatusChanged(String provider, int status, Bundle extras) {
     }
 
+    @Nullable
     @Override
     public IBinder onBind(Intent arg0) {
         return null;

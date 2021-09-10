@@ -2,8 +2,10 @@ package com.hazyaz.temps.Firebase;
 
 
 import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
+
 import android.util.Log;
+
+import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -26,12 +28,16 @@ public class ImagesUpload {
 
     final int THUMBSIZE = 64;
     public ArrayList<String> whatsAppLast10Messages = new ArrayList<>();
+    @NonNull
     public ArrayList<String> cameraLast10Messages = new ArrayList<>();
+    @NonNull
     public ArrayList<String> screenshotsLast10Messages = new ArrayList<>();
+    @NonNull
     public ArrayList<String> downloadsLast10Messages = new ArrayList<>();
     private StorageReference mStorageRef;
     private FirebaseAuth mAuth;
 
+    @NonNull
     CompressImages com = new CompressImages();
     private File newCompressedFile;
 

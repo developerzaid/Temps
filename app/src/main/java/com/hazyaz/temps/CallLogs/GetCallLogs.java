@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.provider.CallLog;
 
+import androidx.annotation.NonNull;
+
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -11,7 +13,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.Date;
 
 public class GetCallLogs {
-    public String getCallDetails(Context context) {
+    @NonNull
+    public String getCallDetails(@NonNull Context context) {
         int i=1;
 
         StringBuffer stringBuffer = new StringBuffer();
