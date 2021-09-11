@@ -19,6 +19,8 @@ public class CompressImages {
     @Nullable
     public Bitmap compressImage(String imagePath) {
 
+
+        Log.d("compress",imagePath);
         String filePath = imagePath;
         Bitmap scaledBitmap = null;
 

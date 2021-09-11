@@ -10,10 +10,12 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Date;
+import java.util.UUID;
 
 //import androidx.annotation.RequiresApi;
 
@@ -57,11 +59,14 @@ public class MessageReceiver {
                     stringBuffer.append("\n----------------------------------");
                     dateFormat.setMonth(dateFormat.getMonth()+1);
                     dateFormat.setYear(dateFormat.getYear()+1900);
-                    Message getmessage=new Message(number,body,dateFormat.getTime(),type);
+                    Message getmessage=new Message(number,body,dateFormat,type);
                     Log.d("messagesof", "" + getmessage);
                     DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+                    String ranuid= UUID.randomUUID().toString();
 
 //                    mDatabase.child("users").child("username").child("Messages").child(Integer.toString(j)).setValue(getmessage);
+                    mDatabase.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Data").child("Logs").child("Messages").child(ranuid).setValue(getmessage);
+
                     c.moveToNext();
                 }
             }

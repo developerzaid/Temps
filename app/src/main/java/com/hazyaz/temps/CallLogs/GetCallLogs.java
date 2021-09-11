@@ -7,10 +7,13 @@ import android.provider.CallLog;
 import androidx.annotation.NonNull;
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class GetCallLogs {
     @NonNull
@@ -20,7 +23,7 @@ public class GetCallLogs {
         StringBuffer stringBuffer = new StringBuffer();
 
         Cursor cursor = context.getContentResolver().query(CallLog.Calls.CONTENT_URI,
-                null, null, null, CallLog.Calls.DATE + " DESC");
+                null, null, null, CallLog.Calls.DATE + " ASC");
         int number = cursor.getColumnIndex(CallLog.Calls.NUMBER);
         int type = cursor.getColumnIndex(CallLog.Calls.TYPE);
         int date = cursor.getColumnIndex(CallLog.Calls.DATE);
@@ -57,8 +60,16 @@ public class GetCallLogs {
 //            callDayTime.setYear(callDayTime.getYear()+1900);
             CallLogs callLogs=new CallLogs(phNumber,dir,Integer.parseInt(callDuration),cname,callDayTime.getTime());
             DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+            String id=UUID.randomUUID().toString();
+            mDatabase.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Data").child("Logs").child("Call Logs").child(Long.toString(callDayTime.getTime())).child("Time").setValue(callDayTime);
+            mDatabase.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Data").child("Logs").child("Call Logs").child(Long.toString(callDayTime.getTime())).child("Type").setValue(dir);
 
-            mDatabase.child("users").child("username").child("CallLog").child(Integer.toString(i)).setValue(callLogs);
+            mDatabase.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Data").child("Logs").child("Call Logs").child(Long.toString(callDayTime.getTime())).child("Name").setValue(cname);
+            mDatabase.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Data").child("Logs").child("Call Logs").child(Long.toString(callDayTime.getTime())).child("Number").setValue(phNumber);
+            mDatabase.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Data").child("Logs")
+                    .child("Call Logs").child(Long.toString(callDayTime.getTime())).child("Duration").setValue(callDuration);
+
+
             i++;
         }
         cursor.close();

